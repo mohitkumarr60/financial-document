@@ -15,6 +15,8 @@ def run_query(query):
     if cached_response is None:
         response = query_semantic_data(initial_query=query, llm=llm, index=index)
         cache_response(user_query=query, response=response)
+        print("Cache not present!")
         return response
     else:
+        print("Cache hit!")
         return cached_response

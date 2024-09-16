@@ -1,0 +1,18 @@
+"query": what are the key skills of mohit?,
+"response": Here are Mohit's key skills, as listed in the provided context:
+
+**Technical Skills:**
+
+* **Languages:** Python, JavaScript, HTML
+* **Frameworks:** LlamaIndex, LangChain, Node.js, Next.js, Bootstrap, Tailwind CSS
+* **Platforms:** Google Colab, Visual Studio Code, Jupyter Notebook
+* **Databases:** MongoDB, ChromaDB, Redis 
+
+**Soft Skills:**
+
+* Problem-Solving
+* Communication
+* Teamwork
+* Adaptability
+* Attention to Detail 
+
