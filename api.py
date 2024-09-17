@@ -86,8 +86,8 @@ async def upload_files(files: List[UploadFile] = File(...)):
 @app.post("/get-response/")
 async def get_response(query: str):
     try:
-        run_query(query)
-        return JSONResponse(content={"detail":"Query executed successfully", "success": True})
+        response = run_query(query)
+        return JSONResponse(content={"response": response})
     except Exception as e:
         return JSONResponse(content={"detail": str(e)}, status_code=500)
 
@@ -99,3 +99,4 @@ def read_root():
 if __name__ == "__main__":
     # Run the FastAPI app
     uvicorn.run(app, host="127.0.0.1", port=8000)
+    

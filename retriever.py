@@ -21,5 +21,4 @@ def query_semantic_data(initial_query,llm,index):
     
     # Generate a response using the language model (LLM) with the provided prompt
     response = llm.complete(prompt)
-    
     return response

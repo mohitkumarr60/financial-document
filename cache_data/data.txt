@@ -1,18 +1,14 @@
-"query": what are the key skills of mohit?,
-"response": Here are Mohit's key skills, as listed in the provided context:
+"query": give me 10 points from this resume,
+"response": Here are 10 points from the provided resume:
 
-**Technical Skills:**
-
-* **Languages:** Python, JavaScript, HTML
-* **Frameworks:** LlamaIndex, LangChain, Node.js, Next.js, Bootstrap, Tailwind CSS
-* **Platforms:** Google Colab, Visual Studio Code, Jupyter Notebook
-* **Databases:** MongoDB, ChromaDB, Redis 
-
-**Soft Skills:**
-
-* Problem-Solving
-* Communication
-* Teamwork
-* Adaptability
-* Attention to Detail 
+1. **Mohit Saroha** is a **Generative AI Engineer** with a strong background in developing and deploying AI-powered solutions, particularly chatbots.
+2. He leverages cutting-edge technologies like **LLMs, LlamaIndex, LangChain, and HuggingFace** to build advanced chatbots.
+3. Mohit has experience in **Retrieval-Augmented Generation (RAG)** techniques to enhance chatbot responses with accurate and contextually relevant information.
+4. He is proficient in **Prompt Engineering**, enabling him to fine-tune AI models for improved interaction quality and user satisfaction.
+5. His skillset includes programming languages like **Python, JavaScript, and HTML**, along with frameworks like **Node.js, Next.js, Bootstrap, and Tailwind CSS.**
+6. Mohit has worked with databases such as **MongoDB, ChromaDB, and Redis.**
+7. He has completed projects like a **YouTube Playlist QnA Bot, a Learning Management System (LMS), a Career Guidance Chatbot, and a Burger Ordering Bot.**
+8. Mohit possesses strong soft skills, including **problem-solving, communication, teamwork, adaptability, and attention to detail.**
+9. He holds a **Master of Computer Application** degree from **Maharshi Dayanand University** and a **Bachelor of Science (Med.)** degree from **Govt. P.G. College.**
+10. Mohit has obtained certifications in **"Crash Course on Python"** from Google and **"ChatGPT Prompt Engineering for Developers"** from DeepLearning.AI. 
 
