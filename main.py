@@ -5,15 +5,23 @@ import zipfile
 from typing import List
 from generator import generate_embeddings
 from response import run_query
-import uvicorn
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+import shutil
 
-
-class Item(BaseModel):
-    name: str
-    description: str
+class QueryModel(BaseModel):
+    query: str
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Define directories for temporary storage, zipped file, and unzipped output
 UPLOAD_DIR = "uploaded_files"
@@ -57,6 +65,17 @@ def create_embeddings():
 
 @app.post("/upload-files/")
 async def upload_files(files: List[UploadFile] = File(...)):
+    # Delete existing directories if they exist
+    if os.path.exists(UPLOAD_DIR) or os.path.exists(ZIP_OUTPUT_DIR) or os.path.exists(UNZIP_OUTPUT_DIR):
+        shutil.rmtree(UPLOAD_DIR)
+        shutil.rmtree(ZIP_OUTPUT_DIR)
+        shutil.rmtree(UNZIP_OUTPUT_DIR)
+
+    # Recreate directories for new uploads
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
+    os.makedirs(ZIP_OUTPUT_DIR, exist_ok=True)
+    os.makedirs(UNZIP_OUTPUT_DIR, exist_ok=True)
+
     saved_file_paths = []
     
     try:
@@ -72,7 +91,7 @@ async def upload_files(files: List[UploadFile] = File(...)):
         zip_files(saved_file_paths, zip_file_path)
 
         # Automatically run create_embeddings after upload completes
-        embeddings_response = create_embeddings()
+        create_embeddings()
 
         # Combine both upload and embedding responses
         return JSONResponse(content={
@@ -84,10 +103,10 @@ async def upload_files(files: List[UploadFile] = File(...)):
         return JSONResponse(content={"detail": str(e)}, status_code=500)
 
 @app.post("/get-response/")
-async def get_response(query: str):
+async def get_response(query: QueryModel) -> str:
     try:
-        response = run_query(query)
-        return JSONResponse(content={"response": response})
+        response = run_query(query.query)
+        return response
     except Exception as e:
         return JSONResponse(content={"detail": str(e)}, status_code=500)
 
@@ -98,5 +117,5 @@ def read_root():
 
 if __name__ == "__main__":
     # Run the FastAPI app
-    uvicorn.run(app, host="127.0.0.1", port=8000)
-    
+    import uvicorn
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, debug=True)
