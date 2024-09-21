@@ -11,6 +11,7 @@ llm = initialize_llm()
 index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
 
 def run_query(query):   
+    print("query hitted")
     cached_response = get_cached_response(query)
     if cached_response is None:
         response = query_semantic_data(initial_query=query, llm=llm, index=index)

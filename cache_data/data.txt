@@ -1,0 +1,3 @@
+"query": qualifications of mohit,
+"response": Mohit has a Master of Computer Application and a Bachelor of Science (Med.). He also has certificates in Python and ChatGPT Prompt Engineering. 
+

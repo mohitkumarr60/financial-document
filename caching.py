@@ -26,13 +26,14 @@ def creating_cache(query,response):
 
 def get_cached_response(user_query):
     index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
-
     # Create the index
     retriever = index.as_retriever(similarity_top_k=1)
     result_nodes = retriever.retrieve(user_query)
-    score = result_nodes[0].score
-    cached_response = result_nodes[0].text.split('"response": ')[1].strip()
-
+    if result_nodes == []:
+        return None
+    else:
+        score = result_nodes[0].score
+        cached_response = result_nodes[0].text.split('"response": ')[1].strip()
     if score > 0.75:
         # Return the cached response
         return cached_response
